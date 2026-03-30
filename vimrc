@@ -12,6 +12,7 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 """ General
 set history=1000              " Number of things to remember in history.
+set maxmempattern=5000 
 set timeoutlen=250            " Time to wait after ESC (default causes an annoying delay)
 set number                    " show line numbers
 set nofoldenable              " disable folding

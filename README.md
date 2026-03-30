@@ -1,4 +1,6 @@
-# Vim configuration for program development and file editing.
+# Dotfiles — Vim, tmux & Ghostty
+
+Personal development environment configuration, managed in a single repository.
 
 ## Plugin List
 
@@ -49,32 +51,36 @@
 
 ## Installation
 
-### Vim Install
-
-```
-brew install macvim --env-std --with-override-system-vim
-```
-
-Fix bug!
-
-```
-brew install reattach-to-user-namespace
-```
-
-Git clone vimfiles
+### Prerequisites
 
 ```bash
-cd ~
-mkdir -p ~/.vim/autoload ~/.vim/bundle
-git clone https://github.com/bjsun/vimfiles .vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-ln -s ~/.vim/vimrc ~/.vimrc && ln -s ~/.vim/gvimrc ~/.gvimrc
-
-vim command
-:PluginInstall
-
-git clone https://github.com/gpakosz/.tmux.git ~/.tmux
-ln -s -f ~/.tmux/.tmux.conf ~/
-ln -s ~/.vim/tmux.conf.local ~/.tmux.conf.local
+brew install macvim reattach-to-user-namespace
 ```
+
+### Quick Start
+
+```bash
+git clone https://github.com/bjsun/vimfiles ~/.vim
+cd ~/.vim && ./install.sh
+```
+
+The install script will automatically:
+
+- Symlink `vimrc`, `gvimrc` to home directory
+- Clone and configure [gpakosz/.tmux](https://github.com/gpakosz/.tmux) framework
+- Symlink `tmux.conf.local` to home directory
+- Create `~/.config/ghostty/` and symlink [Ghostty](https://ghostty.org) config
+
+After running the script, open Vim and execute `:PluginInstall` to install plugins.
+
+### What Gets Linked
+
+| Source (this repo)   | Target                        |
+|----------------------|-------------------------------|
+| `vimrc`              | `~/.vimrc`                    |
+| `gvimrc`             | `~/.gvimrc`                   |
+| `tmux.conf.local`    | `~/.tmux.conf.local`          |
+| `ghostty.config`     | `~/.config/ghostty/config`    |
+
+The script is idempotent — safe to run multiple times. Existing files are backed up to `*.bak` before being replaced.
 
